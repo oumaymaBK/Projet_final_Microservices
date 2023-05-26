@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package agency;
+
+message Agency {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message GetAgencyRequest {
+  string agency_id = 1;
+}
+
+message GetAgencyResponse {
+  Agency agency = 1;
+}
+
+message SearchAgenciesRequest {
+  string query = 1;
+}
+
+message SearchAgenciesResponse {
+  repeated Agency agencies = 1;
+}
+
+message CreateAgencyRequest {
+  string agency_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message CreateAgencyResponse {
+  Agency agency = 1;
+}
+
+service AgencyService {
+  rpc GetAgency(GetAgencyRequest) returns (GetAgencyResponse);
+  rpc SearchAgencies(SearchAgenciesRequest) returns (SearchAgenciesResponse);
+  rpc CreateAgency(CreateAgencyRequest) returns (CreateAgencyResponse);
+}
